@@ -1,5 +1,4 @@
 # chef-aps-inspec-tomcat Inspec Profile
-[![Build Status](https://travis-ci.org/Alfresco/chef-aps-appserver.svg)](https://travis-ci.org/Alfresco/chef-aps-inspec-tomcat?branch=develop)
 
 Inspec profile for [chef-aps-appserver](https://github.com/Alfresco/chef-aps-appserver) cookbook
 
