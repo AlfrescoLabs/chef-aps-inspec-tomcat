@@ -14,4 +14,3 @@ task :yamllint do
 end
 
 task default: [:yamllint, :cookstyle]
-
