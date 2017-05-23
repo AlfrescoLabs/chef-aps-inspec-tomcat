@@ -6,4 +6,11 @@ task :cookstyle do
   sh 'chef exec bundle exec cookstyle'
 end
 
-task default: [:cookstyle]
+desc 'Runs yamllint checks'
+task :yamllint do
+  YamlLint::RakeTask.new do |t|
+    t.paths = %w( \.*\.y*ml )
+  end
+end
+
+task default: [:yamllint, :cookstyle]
