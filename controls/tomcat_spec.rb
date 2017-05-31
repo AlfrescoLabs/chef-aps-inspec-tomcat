@@ -33,7 +33,7 @@ control 'aps-appserver-04' do
   impact 0.7
   desc 'Checks Tomcat activiti packages folder'
 
-  describe directory('/usr/share/tomcat/activiti') do
+  describe directory('/usr/share/tomcat') do
     it { should exist }
     it { should be_directory }
     its('owner') { should eq username }
@@ -51,7 +51,7 @@ control 'aps-appserver-05' do
   impact 0.7
   desc 'Checks Tomcat activiti packages binary files'
 
-  describe file('/usr/share/tomcat/activiti/bin/setenv.sh') do
+  describe file('/usr/share/tomcat/bin/setenv.sh') do
     it { should exist }
     it { should be_file }
     its('owner') { should eq username }
@@ -68,7 +68,7 @@ end
 control 'aps-appserver-06' do
   impact 0.7
   desc 'Checks Tomcat activiti packages configuration files'
-  describe file('/usr/share/tomcat/activiti/conf/web.xml') do
+  describe file('/usr/share/tomcat/conf/web.xml') do
     it { should exist }
     it { should be_file }
     its('owner') { should eq username }
@@ -82,7 +82,7 @@ control 'aps-appserver-06' do
     its('content') { should match '<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"' }
   end
 
-  describe file('/usr/share/tomcat/activiti/conf/context.xml') do
+  describe file('/usr/share/tomcat/conf/context.xml') do
     it { should exist }
     it { should be_file }
     its('owner') { should eq username }
@@ -128,7 +128,7 @@ control 'aps-appserver-08' do
     it { should_not be_writable.by_user(username) }
     it { should be_readable.by_user(username) }
     it { should_not be_executable.by_user(username) }
-    its('content') { should match 'Environment="CATALINA_HOME=/usr/share/tomcat-8.0.36"' }
+    its('content') { should match 'Environment="CATALINA_HOME=/usr/share/tomcat"' }
     its('content') { should match '"CATALINA_BASE=/usr/share/tomcat/activiti" "JAVA_HOME=/usr"' }
   end
 end
