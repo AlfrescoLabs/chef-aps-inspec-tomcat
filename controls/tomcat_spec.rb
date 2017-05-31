@@ -129,7 +129,8 @@ control 'aps-appserver-08' do
     it { should be_readable.by_user(username) }
     it { should_not be_executable.by_user(username) }
     its('content') { should match 'Environment="CATALINA_HOME=/usr/share/tomcat"' }
-    its('content') { should match '"CATALINA_BASE=/usr/share/tomcat/activiti" "JAVA_HOME=/usr"' }
+    its('content') { should match '"CATALINA_BASE=/usr/share/tomcat"' }
+    its('content') { should match '"JAVA_HOME=/usr"' }
   end
 end
 
@@ -155,7 +156,7 @@ control 'aps-appserver-10' do
   impact 0.7
   desc 'Checks variable lib file for tomcat'
 
-  describe directory('/var/lib/tomcat/activiti') do
+  describe directory('/var/lib/tomcat') do
     it { should exist }
     it { should be_directory }
     its('owner') { should eq username }
@@ -173,7 +174,7 @@ control 'aps-appserver-11' do
   impact 0.7
   desc 'Checks variable cache file for tomcat'
 
-  describe directory('/var/cache/tomcat/activiti') do
+  describe directory('/var/cache/tomcat') do
     it { should exist }
     it { should be_directory }
     its('owner') { should eq username }
