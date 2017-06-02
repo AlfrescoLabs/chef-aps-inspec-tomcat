@@ -21,16 +21,6 @@ end
 
 control 'aps-appserver-03' do
   impact 0.7
-  desc 'Checks Tomcat-activiti service running'
-
-  describe service('tomcat-activiti') do
-    it { should_not be_enabled }
-    it { should_not be_running }
-  end
-end
-
-control 'aps-appserver-04' do
-  impact 0.7
   desc 'Checks Tomcat activiti packages folder'
 
   describe directory('/usr/share/tomcat') do
@@ -47,7 +37,7 @@ control 'aps-appserver-04' do
   end
 end
 
-control 'aps-appserver-05' do
+control 'aps-appserver-04' do
   impact 0.7
   desc 'Checks Tomcat activiti packages binary files'
 
@@ -65,7 +55,7 @@ control 'aps-appserver-05' do
   end
 end
 
-control 'aps-appserver-06' do
+control 'aps-appserver-05' do
   impact 0.7
   desc 'Checks Tomcat activiti packages configuration files'
   describe file('/usr/share/tomcat/conf/web.xml') do
@@ -81,6 +71,11 @@ control 'aps-appserver-06' do
     it { should_not be_executable.by_user('nginx') }
     its('content') { should match '<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"' }
   end
+end
+
+control 'aps-appserver-06' do
+  impact 0.7
+  desc 'Checks Tomcat activiti packages configuration files'
 
   describe file('/usr/share/tomcat/conf/context.xml') do
     it { should exist }
